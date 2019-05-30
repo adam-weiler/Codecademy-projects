@@ -1,0 +1,60 @@
+--Write the following queries:
+-- SELECT * FROM startups;
+--Shows everything in table.
+
+-- SELECT COUNT(*) FROM startups;
+--Counts number of companies in table. Returns 70.
+
+-- SELECT SUM(valuation) FROM startups;
+--Sums total value of all companies in the table. Returns 974455790000.
+
+-- SELECT MAX(raised) FROM startups;
+--Shows the max amount of money raised. Returns 11500000000
+
+-- SELECT MAX(raised) FROM startups
+-- WHERE stage = 'Seed';
+--Shows max amount of money raised during the Seed stage. Returns 1800000
+
+-- SELECT MIN(founded) FROM startups;
+--Shows the min year which is when the oldest company was founded. Returns 1994.
+
+
+--Let's find out the valuations among different sectors:
+-- SELECT AVG(valuation) FROM startups;
+--Shows the average valuation of all companies. Returns 15974685081.9672.
+
+-- SELECT category, AVG(valuation) FROM startups
+-- GROUP BY 1;
+--Shows each category and its average valuation. Groups everything by category (1).
+
+-- SELECT category, ROUND(AVG(valuation), 2) FROM startups
+-- GROUP BY 1;
+--Shows each category and its average valuation rounded to two decimal places. Groups everything by category (1).
+
+-- SELECT category, ROUND(AVG(valuation), 2) FROM startups
+-- GROUP BY 1
+-- ORDER BY 2 DESC;
+--Shows each category and its average valuation rounded to two decimal places. Groups everything by category (1). Orders it by average valuation (2) from highest to lowest.
+
+
+--What are the most competitive markets?
+-- SELECT category, COUNT(*) FROM startups
+-- GROUP BY 1;
+--Shows each category and counts number of companies in each category. Groups everything by category (1).
+
+-- SELECT category, COUNT(*) FROM startups
+-- GROUP BY 1
+-- HAVING COUNT(*) > 3
+-- ORDER BY 2 DESC;
+--Shows each category and counts number of companies in each category. Groups everything by category (1). Having more than 3 companies in each category. Orders it by number of companies (2) from highest to lowest.
+
+
+--Let's see if there's a difference in startups sizes among different locations:
+-- SELECT location, avg(employees) FROM startups
+-- GROUP BY 1;
+--Shows each location and average number of employees. Groups everything by location (1).
+
+SELECT location, avg(employees) FROM startups
+GROUP BY 1
+HAVING avg(employees) > 500;
+--Shows each location and average number of employees. Groups everything by location (1). Having more than 500 average employees in each location.
