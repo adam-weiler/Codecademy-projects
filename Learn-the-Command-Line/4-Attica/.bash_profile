@@ -1,0 +1,5 @@
+echo "Hello World!"
+alias pd="pwd"
+alias ll="ls -la"
+export USER="Adam W"
+export PS1=">> "
